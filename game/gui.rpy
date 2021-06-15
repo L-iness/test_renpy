@@ -362,9 +362,31 @@ define gui.history_text_xalign = 0.0
 ## The borders of the background of the NVL-mode background window.
 define gui.nvl_borders = Borders(0, 10, 0, 20)
 
+## The layer the nvl screens are shown on.
+define config.nvl_layer = "screens"
+
 ## The maximum number of NVL-mode entries Ren'Py will display. When more entries
 ## than this are to be show, the oldest entry will be removed.
+## If not None, the maximum length of the the list of NVL dialogue.
+## This can be set (often in conjuction with forcing the dialogue to have a
+## fixed height) in order to emulate an infinite scrolling NVL window.
 define gui.nvl_list_length = 6
+
+
+## If not None, this is the click-to-continue indicator that is used for NVL
+## mode characters that are at the end of a page.
+## (That is, immediately followed by an nvl clear statement.)
+## This replaces the ctc parameter of Character().
+define config.nvl_page_ctc = None
+
+## If not None, this is the click-to-continue indicator position that is used
+## for NVL mode characters that are at the end of a page. (That is, immediately
+## followed by an nvl clear statement.)
+## This replaces the ctc_position parameter of Character().
+define config.nvl_page_ctc_position = "nestled"
+
+## If true, NVL-mode rollback will occur a full page at a time.
+define config.nvl_paged_rollback = False
 
 ## The height of an NVL-mode entry. Set this to None to have the entries
 ## dynamically adjust height.
@@ -412,6 +434,21 @@ define gui.language = "unicode"
 ################################################################################
 
 init python:
+
+    ## The NVL-mode window can be controlled with the standard window show and
+    ## window hide statements.
+    ## Setting config.empty_window to nvl_show_core will cause the NVL-mode
+    ## window to be displayed during a transition. (The last two lines select
+    ## the default transitions to be used for showing and hiding the window.)
+    ## To enable this, add the following to your game:
+    config.empty_window = nvl_show_core
+    config.window_hide_transition = dissolve
+    config.window_show_transition = dissolve
+
+    ## Paged rollback causes Ren'Py to rollback one NVL-mode page at a time,
+    ## rather than one block of text at a time. It can be enabled by including
+    ## the following in your script.
+    config.nvl_paged_rollback = True
 
     ## This increases the size of the quick buttons to make them easier to touch
     ## on tablets and phones.
@@ -470,6 +507,3 @@ init python:
 
         gui.nvl_button_width = 1240
         gui.nvl_button_xpos = 20
-
-
-

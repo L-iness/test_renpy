@@ -3,8 +3,12 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
+define narrator = nvl_narrator
+define menu = nvl_menu
+
 define s = Character('Sylvie', kind=nvl, color="#c8ffc8")
 define m = Character('Me', kind=nvl, color="#c8c8ff")
+
 
 image s = "e_normal.png"
 image uni = "bg uni.jpg"
@@ -33,7 +37,8 @@ label start:
 
     s "Once you add a story, pictures, and music, you can release it to the world!"
 
-    menu:
+
+    menu (nvl=True):
         m "Let's test it then!"
 
         "Now":
@@ -52,12 +57,16 @@ label now :
 
     s "Ok! Let's start!"
 
+    nvl clear
+
     scene black
     with dissolve
 
     "{b}Starting...{/b}."
 
     "I'll ask her..."
+
+    nvl clear
 
     m "Um... will you..."
     m "Will you be my artist for a visual novel?"
