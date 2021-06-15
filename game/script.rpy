@@ -14,6 +14,7 @@ image s = "e_normal.png"
 image uni = "bg uni.jpg"
 
 
+
 # The game starts here.
 
 label start:
@@ -23,6 +24,9 @@ label start:
     # images directory to show it.
 
     scene uni
+
+    show screen titledwindow
+    show screen image_menu
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images

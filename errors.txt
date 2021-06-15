@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 40: expected statement.
-    {clear}
-           ^
+File "game/01creator_screen.rpy", line 5: python block expects a non-empty block.
+    python early:
+                 ^
 
 Ren'Py Version: Ren'Py 7.4.6.1693
-Tue Jun 15 09:17:13 2021
+Tue Jun 15 10:43:13 2021
