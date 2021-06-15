@@ -1,68 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 36, in script
-    with dissolve
-  File "game/01creator_screen.rpy", line 25, in execute
-    screen image_menu():
-  File "game/01creator_screen.rpy", line 25, in execute
-    screen image_menu():
-  File "game/01creator_screen.rpy", line 26, in execute
-    vbox xalign 0.5 yalign 0.5:
-  File "game/01creator_screen.rpy", line 27, in execute
-    imagebutton auto "icon.png" action Null
-  File "renpy/common/00defaults.rpy", line 139, in _imagemap_auto_function
-    rv = auto_param % variant
-TypeError: not all arguments converted during string formatting
+  File "game/script.rpy", line 28, in script
+    show screen titledwindow
+  File "renpy/common/000statements.rpy", line 548, in execute_show_screen
+    renpy.show_screen(name, *args, **kwargs)
+Exception: Screen titledwindow is not known.
+
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 36, in script
-    with dissolve
-  File "renpy/ast.py", line 1437, in execute
-    renpy.exports.with_statement(trans, paired)
-  File "renpy/exports.py", line 1682, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "renpy/display/core.py", line 2718, in do_with
-    clear=clear)
-  File "renpy/display/core.py", line 3276, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3693, in interact_core
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/display/core.py", line 567, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 567, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 567, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 567, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/screen.py", line 432, in visit_all
-    callback(self)
-  File "renpy/display/core.py", line 3693, in <lambda>
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/display/screen.py", line 443, in per_interact
-    self.update()
-  File "renpy/display/screen.py", line 631, in update
-    self.screen.function(**self.scope)
-  File "game/01creator_screen.rpy", line 25, in execute
-    screen image_menu():
-  File "game/01creator_screen.rpy", line 25, in execute
-    screen image_menu():
-  File "game/01creator_screen.rpy", line 26, in execute
-    vbox xalign 0.5 yalign 0.5:
-  File "game/01creator_screen.rpy", line 27, in execute
-    imagebutton auto "icon.png" action Null
-  File "renpy/ui.py", line 952, in _imagebutton
-    idle = choice(idle, idle_image, "idle", required=True)
-  File "renpy/ui.py", line 940, in choice
-    rv = renpy.config.imagemap_auto_function(auto, name)
-  File "renpy/common/00defaults.rpy", line 139, in _imagemap_auto_function
-    rv = auto_param % variant
-TypeError: not all arguments converted during string formatting
+  File "game/script.rpy", line 28, in script
+    show screen titledwindow
+  File "renpy/ast.py", line 2009, in execute
+    self.call("execute")
+  File "renpy/ast.py", line 1997, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "renpy/statements.py", line 278, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 548, in execute_show_screen
+    renpy.show_screen(name, *args, **kwargs)
+  File "renpy/display/screen.py", line 1115, in show_screen
+    raise Exception("Screen %s is not known.\n" % (name[0],))
+Exception: Screen titledwindow is not known.
+
 
 Windows-10-10.0.19041
 Ren'Py 7.4.6.1693
 test_renpy 1.0
-Tue Jun 15 10:46:42 2021
+Tue Jun 15 12:40:26 2021
